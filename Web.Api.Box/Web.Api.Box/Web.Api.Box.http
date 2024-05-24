@@ -1,0 +1,6 @@
+@Web.Api.Box_HostAddress = http://localhost:5271
+
+#GET {{Web.Api.Box_HostAddress}}/weatherforecast/
+#Accept: application/json
+
+###

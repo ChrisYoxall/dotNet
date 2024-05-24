@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6b759996_002Dcfe1_002D491e_002D8375_002D96fd18d790d3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="BoxTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::012876C4-28A7-44E4-A433-F00F9A0251D2::net8.0::Web.Api.Box.Tests.BoxTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::012876C4-28A7-44E4-A433-F00F9A0251D2::net8.0::Web.Api.Box.Tests.OperationsTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::012876C4-28A7-44E4-A433-F00F9A0251D2::net8.0::Web.Api.Box.Tests.ThingTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::012876C4-28A7-44E4-A433-F00F9A0251D2::net8.0::Web.Api.Box.Tests.Scratch&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

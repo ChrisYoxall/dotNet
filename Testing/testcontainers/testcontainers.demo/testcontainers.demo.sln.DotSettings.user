@@ -1,0 +1,15 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=57849ea1_002D13e0_002D45cd_002D8169_002Daaf0084ba70a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.UnitTest1.Test1&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.HttpTest.Can_Call_Endpoint&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.HttpTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.TestIsolation.DatabaseContainerPerTest.Database_Can_Run_Query&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.TestIsolation.DatabaseContainerPerTest.Database_Can_Select_DateTime&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.TestIsolation.DatabaseContainerPerTest.Can_Store_Document_With_Marten&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.TestIsolation.DatabaseContainerPerTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.TestIsolation.DatabaseContainerPerTestClass&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.TestIsolation.ContainerPerCollection&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CFD18DAC-AFD6-4196-B5AD-770C1F68C4AA::net8.0::testcontainers.demo.WebAppWithDatabase&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

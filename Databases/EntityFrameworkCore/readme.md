@@ -48,17 +48,22 @@ I prefer the second option as I use Rider (so no Package Manager Console) and al
 globally for version management.
 
 To install a tool for local access only (for the current directory and subdirectories), you must add the tool to a tool manifest
-file. To create a tool manifest file:
+file. The manifest file is called 'dotnet-tools.json' and is inside a directory called '.config'. To create a tool manifest file
+if it does not already exist do:
 
     dotnet new tool-manifest
 
-To install the EF Core CLI tools, run:
+To install the EF Core CLI tools locally (i.e. don't use the --global flag), run:
 
     dotnet tool install dotnet-ef
 
 View installed tools by doing:
 
     dotnet tool list
+
+Check the manifest file into version control. In the future to restore the tools can simply do:
+
+    dotnet tool restore
 
 To uninstall the EF Core CLI tools, run:
     

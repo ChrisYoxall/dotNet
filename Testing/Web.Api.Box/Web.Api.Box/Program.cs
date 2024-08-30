@@ -2,21 +2,21 @@
 // wrapping your code in a class or method. Refer https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/program-structure/top-level-statements
 
 // ASP.NET Core 6.0 introduced minimal APIs. Refer https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api
-// This project isn't a minimal API project as it uses controllers.
+// This project isn't a minimal API project as it uses controllers
 
 
-// DEV CERT CURRENTLY NOT TRUSTED - SEE LINUX SECTION OF https://learn.microsoft.com/en-us/aspnet/core/security/enforcing-ssl
+/* WebApplicationBuilder */
 
+// Create a WebApplicationBuilder used to configure and build the WebApplication
+// See https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/webapplication
+
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ADD SERVICES TO THE CONTAINER
-
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
-
-// See Enable HTTP logging below
-//builder.Services.AddHttpLogging(_ => { });
 
 // Add console logger https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/
 builder.Logging.ClearProviders();
@@ -27,13 +27,17 @@ builder.Logging.AddConsole();
 // Very verbose so turned off currently
 //builder.Services.AddHttpLogging(o => { });
 
+
+
+/* WebApplication */
+
+// Create the WebApplication which starts the app and begins listening for incoming HTTP requests.
+// Allows configuration of the app's services, routing & middleware.
 var app = builder.Build();
 
-// Part of HTTP logging
+
+// Part of HTTP logging above. Very verbose so turned off currently
 //app.UseHttpLogging();
-
-
-// CONFIGURE THE HTTP REQUEST PIPELINE
 
 if (app.Environment.IsDevelopment())
 {
@@ -58,7 +62,7 @@ app.UseEndpoints(
 //
 // foreach(var route in routes)
 // {
-//     Debug.WriteLine($"{route.AttributeRouteInfo?.Template}");
+//     Debug.WriteLine($"Route: {route.AttributeRouteInfo?.Template}");
 // }
 
 

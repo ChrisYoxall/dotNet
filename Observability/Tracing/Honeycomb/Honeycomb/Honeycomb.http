@@ -1,0 +1,11 @@
+@Honeycomb_HostAddress = https://localhost:7296
+
+GET {{Honeycomb_HostAddress}}/Dice/RollDice?player=Chris/
+Accept: application/json
+
+###
+
+GET {{Honeycomb_HostAddress}}/Dice/RollDice2?player=Chris/
+Accept: application/json
+
+###

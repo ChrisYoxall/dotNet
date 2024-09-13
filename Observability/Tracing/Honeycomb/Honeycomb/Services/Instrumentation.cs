@@ -17,7 +17,7 @@ public class Instrumentation : IDisposable
 {
     public Instrumentation(string sourceName, string sourceVersion)
     {
-        ActivitySource = new ActivitySource(sourceName, sourceName);
+        ActivitySource = new ActivitySource(sourceName, sourceVersion);
     }
 
     public ActivitySource ActivitySource { get; }

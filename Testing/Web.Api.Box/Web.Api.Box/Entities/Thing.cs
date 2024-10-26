@@ -3,7 +3,6 @@ namespace Web.Api.Box.Entities;
 
 public sealed record Thing
 {
-    
     public int Size { get; }
 
     public Thing(int Size)

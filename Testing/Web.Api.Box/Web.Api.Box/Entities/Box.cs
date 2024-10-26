@@ -42,7 +42,7 @@ public sealed record Box : IBox
     public bool CanPutInside(Thing thing, string label)
     {
         return IsOpen 
-               && (GetAvailableSpace() - thing.Size) >= 0 
+               && GetAvailableSpace() - thing.Size >= 0 
                && !_thingsInside.ContainsKey(label);
     }
 

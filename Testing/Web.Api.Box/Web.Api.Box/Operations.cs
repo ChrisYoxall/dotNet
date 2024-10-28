@@ -27,7 +27,7 @@ public static class Operations
                 rest.Add(label, thing);
             }
         }
-        
+
         box.Close();
         writeLog("The box is closed.");
         

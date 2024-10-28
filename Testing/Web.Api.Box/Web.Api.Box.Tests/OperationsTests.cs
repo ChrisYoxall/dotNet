@@ -1,6 +1,3 @@
-
-
-
 using Moq;
 using Web.Api.Box.Entities;
 
@@ -9,7 +6,7 @@ namespace Web.Api.Box.Tests;
 /* Moq allows for either implicit verification:
 
     - add '.Verifiable()' to the setup
-    - after the test use either '.VerifyAll()' on each mock or pass alls mocks to Mock.Verify()
+    - after the test use '.VerifyAll()'
 
 or explicit verification:
 
@@ -26,14 +23,13 @@ public class OperationsTests
         var writeLogMock = new Mock<WriteLog>(MockBehavior.Strict);
         var boxMock = new Mock<IBox>(MockBehavior.Strict);
         
-        var mockSequence = new MockSequence();
+        boxMock.Setup(b => b.Open()).Verifiable(Times.Once);
+        boxMock.Setup(b => b.PutInside(new Thing(5), "thing1")).Returns(true).Verifiable(Times.Once);
+        boxMock.Setup(b => b.PutInside(new Thing(3), "thing2")).Returns(true).Verifiable(Times.Once);
+        boxMock.Setup(b => b.Close()).Verifiable(Times.Once);
         
-        boxMock.InSequence(mockSequence).Setup(b => b.Open());
-        writeLogMock.Setup(wl => wl("The box is opened."));
-        boxMock.InSequence(mockSequence).Setup(b => b.PutInside(new Thing(5), "thing1")).Returns(true);
-        boxMock.InSequence(mockSequence).Setup(b => b.PutInside(new Thing(3), "thing2")).Returns(true);
-        boxMock.InSequence(mockSequence).Setup(b => b.Close());
-        writeLogMock.Setup(wl => wl("The box is closed."));
+        writeLogMock.Setup(wl => wl("The box is opened.")).Verifiable(Times.Once);
+        writeLogMock.Setup(wl => wl("The box is closed.")).Verifiable(Times.Once);
         
         var things = new Dictionary<string, Thing>
         {
@@ -41,7 +37,10 @@ public class OperationsTests
             { "thing2", new Thing(3) }
         };
         
-        Operations.FillBox(boxMock.Object, things,writeLogMock.Object);
+        Operations.FillBox(boxMock.Object, things, writeLogMock.Object);
         
+        // Checks that above mocks were called as expected
+        boxMock.VerifyAll();
+        writeLogMock.VerifyAll();
     }
 }

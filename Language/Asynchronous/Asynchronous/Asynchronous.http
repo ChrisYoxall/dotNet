@@ -1,0 +1,6 @@
+@Asynchronous_HostAddress = http://localhost:5240
+
+GET {{Asynchronous_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

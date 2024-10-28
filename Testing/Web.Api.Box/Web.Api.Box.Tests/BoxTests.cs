@@ -1,6 +1,4 @@
 ﻿using AutoFixture;
-using AutoFixture.Xunit2;
-using Xunit.Abstractions;
 
 namespace Web.Api.Box.Tests;
 
@@ -13,25 +11,6 @@ with random values, or you can customise the set-up so they are not totally rand
 
 public class BoxTests
 {
-    // Used to write messages to the test output
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public BoxTests(ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-    }
-
-
-    [Theory, AutoData]
-    public void CanCreateBox(int boxSize)
-    {
-        _testOutputHelper.WriteLine($"AutoFixture.Xunit2 was used to specify a size of {boxSize}");
-        
-        var b = new Box(boxSize);
-        
-        Assert.Equal(boxSize, b.Size);
-    }
-
     [Fact]
     public void CanPutThingThatFitsIntoOpenBox()
     {

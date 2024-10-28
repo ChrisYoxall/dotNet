@@ -20,6 +20,7 @@ public class BoxController : ControllerBase
     public ActionResult<Entities.Box> GetBox(int id)
     {
         // Get the box corresponding to the id
+        _logger.LogInformation($"Getting box with id {id}");
         return Ok(new Entities.Box(10));
     }
 

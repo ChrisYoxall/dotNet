@@ -92,7 +92,7 @@ public class Scratch
     }
 
     [Fact]
-    public async void MakeHttpCall()
+    public async Task MakeHttpCall()
     {
         using HttpClient client = new();
         //client.DefaultRequestHeaders.Accept.Clear();

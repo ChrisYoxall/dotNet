@@ -1,0 +1,28 @@
+
+@url = http://localhost:5155
+@docker_url = http://localhost:8080
+
+GET {{url}}/openapi/v1.json
+Accept: application/json
+###
+
+GET {{url}}/weatherforecast
+###
+
+GET {{url}}/weatherforecast/city/Palmerston North
+###
+
+GET {{url}}/GitHubUser/validate/chrisyoxall
+###
+
+GET {{url}}/health
+###
+
+
+### DOCKER ###
+
+GET {{docker_url}}/weatherforecast
+###
+
+GET {{docker_url}}/health
+

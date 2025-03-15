@@ -6,10 +6,10 @@ namespace Aca.Demo.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
+    private static readonly string[] Summaries =
+    [
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    ];
 
     private readonly ILogger<WeatherForecastController> _logger;
 
@@ -33,6 +33,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet("city/{city}", Name = "GetWeatherForecastByCity")]
     public string Get([FromRoute] string city)
     {
+        _logger.LogInformation($"In GetWeatherForecastByCity.  City: {city}");
         return $"{city} is {Summaries[Random.Shared.Next(Summaries.Length)]}";
     }
 }

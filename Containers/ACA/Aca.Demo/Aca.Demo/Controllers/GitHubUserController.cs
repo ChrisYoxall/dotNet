@@ -26,10 +26,10 @@ public class GitHubUserController : ControllerBase
         {
             var client = _httpClientFactory.CreateClient("GitHub");
             var response = await client.GetAsync($"users/{username}");
-                
+             
+            // User exists. Returns flag with result plus the returned data
             if (response.IsSuccessStatusCode)
             {
-                // User exists - you can either return true or the full user data
                 var user = await response.Content.ReadFromJsonAsync<GitHubUser>();
                 return Ok(new { 
                     IsValid = true, 
@@ -37,9 +37,9 @@ public class GitHubUserController : ControllerBase
                 });
             }
             
+            // User does not exist
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                // User does not exist
                 return Ok(new { IsValid = false });
             }
             

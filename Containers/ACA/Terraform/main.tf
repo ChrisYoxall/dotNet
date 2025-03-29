@@ -8,7 +8,7 @@ terraform {
 
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~>4.22.0"
+      version = "~>4.25.0"
     }
 
   }
@@ -85,7 +85,7 @@ resource "azurerm_container_app" "ca" {
   ingress {
     external_enabled           = true
     allow_insecure_connections = false
-    target_port                = 8080
+    target_port                = 80
     traffic_weight {
       percentage      = 100
       latest_revision = true
@@ -95,7 +95,7 @@ resource "azurerm_container_app" "ca" {
   template {
     container {
       name   = "demo-app"
-      image  = "yoxalldemoaca.azurecr.io/aca-demo:0.1.0"
+      image  = "docker.io/nginx:1.27.4-alpine"
       cpu    = 0.25
       memory = "0.5Gi"
     }

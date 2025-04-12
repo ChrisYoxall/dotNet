@@ -1,0 +1,28 @@
+type: Microsoft.App/containerApps
+kind: containerApps
+properties:
+  workloadProfileName: Consumption
+  configuration:
+    activeRevisionsMode: Single
+    ingress:
+      allowInsecure: false
+      external: true
+      targetPort: 8080
+      transport: Auto
+    maxInactiveRevisions: 1
+    secrets: null
+    service: null
+  template:
+    containers:
+    - image: yoxalldemoaca.azurecr.io/aca-demo:0.1.0
+      name: demo-app
+      probes: []
+      resources:
+        cpu: 0.25
+        ephemeralStorage: 1Gi
+        memory: 0.5Gi
+    revisionSuffix: '0-1-0'
+    scale:
+      maxReplicas: 10
+      minReplicas: 0
+    volumes: []

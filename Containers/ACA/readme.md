@@ -92,6 +92,9 @@ I removed a lot of entries that were related to the running state of the contain
 for this demo I udpdated the image, revisionSuffix and target port. The result is the container-template.yaml file.  The schema is described more
 at https://learn.microsoft.com/en-us/azure/container-apps/azure-resource-manager-api-spec
 
+To make changes its probably easier to make them first in the portal, then view the details of the change by doing a 'show' as above, and then
+updating the yaml file.
+
 Apply this file by doing:
 
     az containerapp update -g aca-demo-rg -n demo-ca --yaml ./container-template.yaml

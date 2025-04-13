@@ -1,17 +1,4 @@
 
-
-Going through [this MS Learn pathway](https://learn.microsoft.com/en-us/training/paths/deploy-cloud-native-applications-to-azure-container-apps/)
-
-and maybe the table at bottom of https://learn.microsoft.com/en-us/azure/container-apps/start-serverless-containers
-
-
-Do: https://learn.microsoft.com/en-us/azure/container-apps/managed-identity-image-pull?tabs=bash&pivots=portal
-
-This tutorial looks comprehensive: https://minkovski-d.medium.com/hands-on-azure-container-apps-101-deploying-a-scalable-go-backend-8048b2c155f6
-
-
-
-
 # ACA Demo #
 
 Shows how to get a container running on ACA

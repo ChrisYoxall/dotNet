@@ -119,4 +119,24 @@ public class Intro
         
         Assert.Equal(["RPG", "Adventure", "Platformer"], distinctGenres);
     }
+
+    [Fact]
+    public void GenerateObjects()
+    {
+        var range = Enumerable.Range(1, 50)
+            .Select(i => new Game
+            {
+                Title = $"Game {i}",
+                Genre = "Test",
+                ReleaseYear = 2000 + i,
+                Rating = i,
+                Price = i * 10
+            })
+            .ToList();
+    
+        Assert.Equal(50, range.Count);
+        Assert.Equal("Game 1", range.First().Title);
+        Assert.Equal(2050, range.Last().ReleaseYear);
+        Assert.Equal(500, range.Last().Price);
+    }
 }

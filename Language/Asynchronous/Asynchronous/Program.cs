@@ -1,17 +1,18 @@
 using Serilog;
 
-Log.Logger  = new LoggerConfiguration()
+Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
-    .CreateLogger();
+    .CreateBootstrapLogger(); // Use bootstrap logger initially
 
 try
 {
-    Log.Information("Starting web application");
-
     var builder = WebApplication.CreateBuilder(args);
     
+    // Set Serilog as the logging provider
+    builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
+    
     // Add services to the container.
-    builder.Services.AddSerilog();
+    builder.Services.AddSingleton(Log.Logger);
     builder.Services.AddControllers();
     builder.Services.AddHttpClient();
     builder.Services.AddEndpointsApiExplorer();
@@ -20,6 +21,8 @@ try
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
+
+    app.UseSerilogRequestLogging();
 
     if (app.Environment.IsDevelopment())
     {

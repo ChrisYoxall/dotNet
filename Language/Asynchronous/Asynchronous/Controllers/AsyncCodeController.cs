@@ -1,7 +1,7 @@
-using System.Security.Cryptography;
+using ILogger = Serilog.ILogger;
 using Microsoft.AspNetCore.Mvc;
 
-/* A thread is a low-level tool for creating concurrency. It's limitations include:
+/* A thread is a low-level tool for creating concurrency. Its limitations include:
  
     - Although it’s easy to start a thread and pass data into it, getting a return value back is not straightforward.
         
@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
             the process).
             
     - Threads are expensive to create and destroy. They consume a lot of memory and CPU cycles. The thread pool
-            helps with this, but comes with its own complexities.
+            helps with this but comes with its own complexities.
         
-Tasks are a higher-level abstraction that solve these problems. They represent a concurrent operation that might or
+Tasks are a higher-level abstraction that solves these problems. They represent a concurrent operation that might or
 might not be backed by a thread. They are lightweight, easy to create, and can be chained together to create complex
 workflows. They are built on top of threads, but are not threads themselves. 
 
@@ -38,7 +38,7 @@ When execution reaches the await expression, you have two possibilities:
                 
 The idiomatic way of representing failures in .NET is via exceptions. When you await an asynchronous operation that’s
 failed, it may have failed a long time ago on a completely different thread. The regular synchronous way of propagating
-exceptions up the stack doesn’t occur naturally. Instead, the async/await infrastructure takes steps to make the experience
+exceptions up the stack doesn't occur naturally. Instead, the async/await infrastructure takes steps to make the experience
 of handling asynchronous failures as similar as possible to synchronous failures.
 
 If you think of failure as another kind of result, it makes sense that exceptions and return values are handled similarly.
@@ -64,21 +64,21 @@ namespace Asynchronous.Controllers;
 public class AsyncCodeController : ControllerBase
 {
     private readonly HttpClient _httpClient;
-    private readonly ILogger<AsyncCodeController> _logger;
+    private readonly ILogger _logger;
 
-    public AsyncCodeController(HttpClient httpClient, ILogger<AsyncCodeController> logger)
+    public AsyncCodeController(HttpClient httpClient, ILogger logger)
     {
         _httpClient = httpClient;
-        _logger = logger;
+        _logger = logger.ForContext<AsyncCodeController>();
     }
     
-    // Can call an asynchronous method from a synchronous method, but can't await it. As the async method
+    // Can call an asynchronous method from a synchronous method but can't await it. As the async method
     // returns once the await keyword is encountered, this method will end up returning before the async method
     // completes (probably) and will print details of the task that is still running.
     [HttpGet("NoAsyncOnCallingMethod")]
     public IActionResult NoAsyncOnCallingMethod()
     {
-        _logger.LogInformation($"Status of task is: {GetPageLengthAsync().Status}");
+        _logger.Information($"Status of task is: {GetPageLengthAsync().Status}");
         
         return Ok();
     }
@@ -88,11 +88,11 @@ public class AsyncCodeController : ControllerBase
     {
         var pageLengthViaAsync = GetPageLengthAsync();
         
-        _logger.LogInformation($"The 'GetPageLengthAsync' method has returned. The task status is: {pageLengthViaAsync.Status}");
+        _logger.Information($"The 'GetPageLengthAsync' method has returned. The task status is: {pageLengthViaAsync.Status}");
         
-        _logger.LogInformation($"Length using blocking method is : {GetPageLengthBlocking()}");
+        _logger.Information($"Length using blocking method is : {GetPageLengthBlocking()}");
         
-        _logger.LogInformation($"Length using async method is : {await pageLengthViaAsync}");
+        _logger.Information($"Length using async method is : {await pageLengthViaAsync}");
         
         return Ok();
     }
@@ -103,7 +103,7 @@ public class AsyncCodeController : ControllerBase
     {
         var task = MethodWithTwoAsyncMethods();
         
-        _logger.LogInformation("Will be here as soon as first await in calling method is hit.");
+        _logger.Information("Will be here as soon as first await in calling method is hit.");
 
         await task;
         
@@ -213,10 +213,10 @@ public class AsyncCodeController : ControllerBase
     private async Task MethodWithTwoAsyncMethods()
     {
         await _httpClient.GetStringAsync("https://www.example.com");
-        _logger.LogInformation("First async method has completed");
+        _logger.Information("First async method has completed");
         
         await _httpClient.GetStringAsync("https://www.google.com");
-        _logger.LogInformation("Second async method has completed");
+        _logger.Information("Second async method has completed");
     }
 
     private void ProcessOrder(int orderId)
@@ -230,7 +230,7 @@ public class AsyncCodeController : ControllerBase
             case 3:
                 throw new TimeoutException($"Order {orderId} processing timed out");
             default:
-                _logger.LogInformation($"Order {orderId} processed successfully");
+                _logger.Information($"Order {orderId} processed successfully");
                 break;
         }
     }
